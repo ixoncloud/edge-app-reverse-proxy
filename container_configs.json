@@ -1,0 +1,32 @@
+[
+  {
+    "container": { "name": "nginx-proxy" },
+    "image": { "name": "nginx-proxy", "tag": "latest" },
+    "ports": [{ "source": 80, "destination": 8000, "protocol": "tcp" }],
+    "networks": [{ "name": "machine-builder" }],
+    "volumes": [{ "name": "nginx-config", "destination": "/etc/nginx" }],
+    "environment_variables": [{ "key": "NGINX_PORT", "value": "80" }]
+  },
+  {
+    "container": { "name": "backend-service1" },
+    "image": { "name": "backend-service1", "tag": "latest" },
+    "ports": [{ "source": 8081, "destination": 8081, "protocol": "tcp" }],
+    "networks": [{ "name": "machine-builder" }],
+    "volumes": [{ "name": "backend1-data", "destination": "/app/data" }],
+    "environment_variables": [
+      { "key": "PORT", "value": "8081" },
+      { "key": "NODE_ENV", "value": "production" }
+    ]
+  },
+  {
+    "container": { "name": "backend-service2" },
+    "image": { "name": "backend-service2", "tag": "latest" },
+    "ports": [{ "source": 8082, "destination": 8082, "protocol": "tcp" }],
+    "networks": [{ "name": "machine-builder" }],
+    "volumes": [{ "name": "backend2-data", "destination": "/app/data" }],
+    "environment_variables": [
+      { "key": "PORT", "value": "8082" },
+      { "key": "NODE_ENV", "value": "production" }
+    ]
+  }
+]

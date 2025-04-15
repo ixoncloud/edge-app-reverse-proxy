@@ -1,0 +1,9 @@
+{
+  "name": "backend-service2",
+  "version": "1.0.0",
+  "description": "Backend Service 2",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
